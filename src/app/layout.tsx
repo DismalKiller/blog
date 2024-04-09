@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/Header";
-
+import Index from "@/components/Header";
 export const metadata: Metadata = {
   title: "Hyun's blog",
   description: "Hyun's blog",
@@ -13,12 +12,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className='bg-gray-900 dark:bg-blend-color'>
-      <Header/>
-      <main>
-        {children}
-      </main>
+    <html lang="en" >
+      <body className="dark:bg-gray-950 bg-gray-100 dark:text-gray-100 text-gray-950">
+        <Index />
+        <main>{children}</main>
       </body>
     </html>
   );

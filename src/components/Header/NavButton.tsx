@@ -1,6 +1,7 @@
 "use client";
 import "./NavButton.css";
 import { usePathname } from "next/navigation";
+import Link from 'next/link'
 export default function NavButton({
   text,
   href,
@@ -8,19 +9,19 @@ export default function NavButton({
   const currentRoute = usePathname().substr(1);
   return (
     <>
-      <a
-        className={
+      <Link
+          className={
           currentRoute === href || (currentRoute === "" && text == "Home")
-            ? "button active"
-            : "button"
+            ? "button  active"
+            : "button "
         }
         href={href}
       >
-        <span className="actual-text">&nbsp;{text}&nbsp;</span>
-        <span aria-hidden="true" className="hover-text">
+        <span className="actual-text ">&nbsp;{text}&nbsp;</span>
+        <span aria-hidden="true" className="hover-text ">
           &nbsp;{text}&nbsp;
         </span>
-      </a>
+      </Link >
     </>
   );
 }
