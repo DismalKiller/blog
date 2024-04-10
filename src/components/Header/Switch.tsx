@@ -4,15 +4,14 @@ import "./Switch.css";
 import {useEffect, useState} from "react";
 
 export default function Switch() {
-  // 初始化状态时，尝试从本地存储中读取暗黑模式的状态
   const [isDark, setIsDark] = useState(() => {
-    return localStorage.getItem('darkMode') === 'true';
+    return typeof window !== 'undefined' && window.localStorage&&localStorage.getItem('darkMode') === 'true';
   });
 
   // 当 isDark 状态发生变化时，更新本地存储
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDark)
-    localStorage.setItem('darkMode', String(isDark));
+    typeof window !== 'undefined' && window.localStorage&&localStorage.setItem('darkMode', String(isDark));
   }, [isDark]);
 
   const toggleDarkMode = () => {
