@@ -1,9 +1,13 @@
 import HeaderNav from "@/components/Header/HeaderNav";
-import Switch from "@/components/Header/Switch";
+import dynamic from "next/dynamic";
+
 export default function Index() {
+  const Switch = dynamic(() => import("@/components/Header/Switch"), {
+    ssr: false,
+  });
   return (
-    <header className="absolute inset-x-0 top-0 z-50">
-      <nav className="flex items-center justify-between p-6 ">
+    <header>
+      <nav className="flex items-center justify-between p-6  bg-gray-150 dark:bg-gray-950">
         <div className=" leading-6 text-gray-900">&nbsp;</div>
         <HeaderNav />
         <div>

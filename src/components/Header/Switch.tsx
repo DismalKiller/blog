@@ -5,13 +5,13 @@ import {useEffect, useState} from "react";
 
 export default function Switch() {
   const [isDark, setIsDark] = useState(() => {
-    return typeof window !== 'undefined' && window.localStorage&&localStorage.getItem('darkMode') === 'true';
+    return localStorage.getItem('darkMode') === 'true';
   });
 
   // 当 isDark 状态发生变化时，更新本地存储
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDark)
-    typeof window !== 'undefined' && window.localStorage&&localStorage.setItem('darkMode', String(isDark));
+    localStorage.setItem('darkMode', String(isDark));
   }, [isDark]);
 
   const toggleDarkMode = () => {

@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky install",
-    "commitlint": "commitlint --config commitlint.config.js -e -V"
+    "commitlint": "commitlint --config commitlint.config.js -e -V",
+    "push": "git push -f root@47.104.218.94:/www/wwwroot/blog.git master",
+    "prod": "next build && next start"
   },
   "dependencies": {
     "next": "14.1.4",
