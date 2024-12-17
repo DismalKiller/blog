@@ -1,0 +1,92 @@
+@tailwind components;
+
+@layer components {
+  /*dark模式*/
+  /* button styling */
+  .dark .button {
+    --border-right: 3px;
+    --text-stroke-color: rgba(255, 255, 255, 0.6);
+    --animation-color: #37ff8b;
+    --fs-size: 1em;
+    letter-spacing: 3px;
+    font-size: var(--fs-size);
+    position: relative;
+    text-transform: uppercase;
+    color: white;
+    font-weight: bold;
+  }
+  /* this is the text, when you hover on button */
+  .dark .hover-text {
+    position: absolute;
+    box-sizing: border-box;
+    color: var(--animation-color);
+    width: 0;
+    top: 0;
+    left: 0;
+    border-right: var(--border-right) solid var(--animation-color);
+    overflow: hidden;
+    transition: 0.5s;
+    -webkit-text-stroke: 1px var(--animation-color);
+  }
+  /* hover */
+  .dark .button:hover .hover-text,
+  .dark .active .hover-text {
+    color: transparent;
+    width: 100%;
+    filter: drop-shadow(0 0 23px var(--animation-color));
+    -webkit-filter: drop-shadow(0 0 23px var(--animation-color));
+  }
+
+  /*light模式*/
+  html:not(.dark) .button {
+    position: relative;
+    border: none;
+    background: transparent;
+    --stroke-color: #ffffff7c;
+    --ani-color: rgba(95, 3, 244, 0);
+    --color-gar: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    letter-spacing: 3px;
+    font-size: 1em;
+    text-transform: uppercase;
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  html:not(.dark) .hover-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    background: var(--color-gar);
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-size: 200%;
+    overflow: hidden;
+    transition: all 1s;
+    animation: 8s ani infinite;
+    border-bottom: 2px solid transparent;
+  }
+
+  html:not(.dark) .button:hover .hover-text,
+  html:not(.dark) .active .hover-text {
+    color: transparent;
+    width: 100%;
+    border-bottom: 2px solid #03a9f4;
+    -webkit-text-stroke: 1px var(--ani-color);
+  }
+
+  @keyframes ani {
+    0% {
+      background-position: 0;
+    }
+
+    50% {
+      background-position: 400%;
+    }
+
+    100% {
+      background-position: 0;
+    }
+  }
+}
