@@ -31,7 +31,7 @@ model Article {
     content   String
     views     Int      @default(0)
     likes     Int      @default(0)
-    tags      String
+    tags      String   @default("")
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 }
@@ -39,6 +39,8 @@ model Article {
 model Tag {
     id        Int      @id @default(autoincrement())
     name      String   @unique
+    color     String?
+    icon      String?
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 }
@@ -47,6 +49,10 @@ model Project {
     id          Int      @id @default(autoincrement())
     title       String
     description String
+    image       String   @default("/logo.png")
+    url         String?
+    githubUrl   String?
+    tags        String   @default("")
     createdAt   DateTime @default(now())
     updatedAt   DateTime @updatedAt
 }

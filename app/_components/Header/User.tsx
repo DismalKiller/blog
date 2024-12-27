@@ -1,23 +1,19 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import Link from "next/link";
 const cookies = require("js-cookie");
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogDescription,
 } from "@/components/ui/dialog";
 import LoginForm from "./LoginForm";
 
@@ -27,11 +23,10 @@ interface UserInfo {
 }
 
 export default function User() {
-  const router = useRouter();
   const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
 
   const fetchUserInfo = () => {
-    fetch("/api/user")
+    fetch("/api/admin/user")
       .then((res) => res.json())
       .then((res) => {
         if (res.code === 200) {

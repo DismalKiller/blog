@@ -14,7 +14,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import {
   Dialog,
@@ -45,7 +44,6 @@ interface LoginFormProps {
 }
 
 export default function LoginForm({ onSuccess, onLogin }: LoginFormProps) {
-  const router = useRouter();
   const { toast } = useToast();
   const [isRegisterDialogOpen, setIsRegisterDialogOpen] = useState(false);
   const form = useForm<z.infer<typeof FormSchema>>({
