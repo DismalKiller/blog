@@ -1,7 +1,7 @@
 import NavButton from "./NavButton";
 
 const navigation = [
-  { name: "Home", href: "/" },
+  { name: "Home", href: "home" },
   { name: "Articles", href: "articles" },
   { name: "Projects", href: "projects" },
   { name: "About", href: "about" },

@@ -21,9 +21,8 @@ export const POST = async (req: NextRequest) => {
       },
     });
     await delKey(email);
-    return NextResponse.json({ code: 200, message: "注册成功", data: user });
+    return NextResponse.json({ code: 200, message: "注册成功" });
   } catch (error) {
-    console.error(error, 22233);
     return NextResponse.json({ code: 500, message: "注册失败" });
   }
 };

@@ -29,7 +29,6 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 const cookies = require("js-cookie");
 
@@ -49,8 +48,9 @@ export default function LoginForm({ onSuccess, onLogin }: LoginFormProps) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      email: "",
-      password: "",
+      email: "hyun1006@outlook.com",
+      password: "123456",
+      //todo: 删除
     },
   });
 

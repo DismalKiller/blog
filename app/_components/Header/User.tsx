@@ -16,6 +16,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import LoginForm from "./LoginForm";
+import { useToast } from "@/hooks/use-toast";
 
 interface UserInfo {
   avatar: string;
@@ -23,16 +24,19 @@ interface UserInfo {
 }
 
 export default function User() {
+  const { toast } = useToast();
   const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
 
   const fetchUserInfo = () => {
-    fetch("/api/admin/user")
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.code === 200) {
-          setUserInfo(res.data);
-        }
-      });
+    if (cookies.get("token")) {
+      fetch("/api/admin/user")
+        .then((res) => res.json())
+        .then((res) => {
+          if (res.code === 200) {
+            setUserInfo(res.data);
+          }
+        });
+    }
   };
 
   useEffect(() => {
@@ -42,6 +46,10 @@ export default function User() {
   const handleLogout = () => {
     cookies.remove("token");
     setUserInfo(null);
+    toast({
+      title: "Success",
+      description: "您已成功退出登录",
+    });
   };
 
   const [isOpen, setIsOpen] = useState(false);
